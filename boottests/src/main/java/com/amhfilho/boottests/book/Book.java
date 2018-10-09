@@ -2,20 +2,21 @@ package com.amhfilho.boottests.book;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.math.BigDecimal;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Book {
+    @Id
     private String isbn;
     private String title;
-    private Integer publishYear;
-    private BigDecimal price;
+    private String author;
 
-    public Book(String isbn, String title, Integer publishYear, BigDecimal price) {
+    public Book(String isbn, String title, String author) {
         this.isbn = isbn;
         this.title = title;
-        this.publishYear = publishYear;
-        this.price = price;
+        this.author = author;
     }
 
     public Book(String isbn) {
@@ -40,8 +41,7 @@ public class Book {
         return "Book{" +
                 "isbn='" + isbn + '\'' +
                 ", title='" + title + '\'' +
-                ", publishYear=" + publishYear +
-                ", price=" + price +
+                ", author=" + author +
                 '}';
     }
 
@@ -66,19 +66,11 @@ public class Book {
         this.title = title;
     }
 
-    public Integer getPublishYear() {
-        return publishYear;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setPublishYear(Integer publishYear) {
-        this.publishYear = publishYear;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-   public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }
